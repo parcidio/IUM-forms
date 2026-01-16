@@ -82,7 +82,7 @@ const FormSettings = () => {
     if (formData) setFormData({ ...formData, settings: { ...formData.settings, backgroundColor: value } });
   };
 
-  const formLink = formData?.formId ? `${window.location.origin}/submit-form/${formData.formId}` : "";
+  const formLink = formData?.formId ? `${window.location.origin}/public/submit-form/${formData.formId}` : "";
 
     const svgId = "qrcode-svg";
 
