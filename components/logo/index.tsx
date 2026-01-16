@@ -1,0 +1,29 @@
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
+
+const Logo = (props: { url?: string; color?: string }) => {
+  const { url = "/", color = "text-white" } = props;
+  return (
+    <div
+      className="flex items-center justify-center
+  sm:justify-start
+    "
+    >
+      <Link href={url} className="flex items-center gap-2">
+        
+        <h5
+          className={cn(
+            `font-bold text-[20px]
+               tracking-[-0.07em] `,
+            color
+          )}
+        >
+          IUM form
+        </h5>
+      </Link>
+    </div>
+  );
+};
+
+export default Logo;
