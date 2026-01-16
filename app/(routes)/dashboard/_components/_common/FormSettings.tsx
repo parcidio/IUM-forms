@@ -55,7 +55,7 @@ const FormSettings = () => {
   const handleCopyLink = async () => {
     if (!formData?.formId) return;
     try {
-      const url = `${window.location.origin}/submit-form/${formData.formId}`;
+      const url = `${window.location.origin}/public/submit-form/${formData.formId}`;
       await navigator.clipboard.writeText(url);
       toast({ title: "Link copied to clipboard" });
     } catch (err) {
