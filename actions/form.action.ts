@@ -375,17 +375,32 @@ export async function deleteFormById(formId: string) {
     const session = getKindeServerSession();
     const user = await session.getUser();
 
-    
- if (!user) {
+    if (!user) {
       return {
         success: false,
         message: "Unauthorized to use this resource",
       };
     }
-    await prisma.form.deleteMany({
+
+    // First, find the form to get its internal id
+    const form = await prisma.form.findFirst({
       where: {
         formId: formId,
         userId: user.id,
+      },
+    });
+
+    if (!form) {
+      return {
+        success: false,
+        message: "Form not found",
+      };
+    }
+
+  
+    await prisma.form.delete({
+      where: {
+        id: form.id,
       },
     });
   
@@ -395,14 +410,16 @@ export async function deleteFormById(formId: string) {
       message: "Form deleted successfully",
     };
   } catch (error) {
-   
 
     if (prisma.form.fields.published) {
+      console.error("Error deleting form:", prisma.form.fields.published);
+      console.error("Error:", error);
       return {
         success: false,
         message: "Please unpublish the form before deleting it",
       };
     }
+
     return {
       success: false,
       message: "Something went wrong",
