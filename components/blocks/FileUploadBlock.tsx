@@ -26,7 +26,8 @@ import {
 import { useBuilder } from "@/context/builder-provider";
 
 const blockCategory: FormCategoryType = "Field";
-const blockType: FormBlockType = "FileUpload";
+const blockType: FormBlockType = "RowLayout";
+//const blockType: FormBlockType = "FileUpload";
 
 type attributesType = {
   label: string;

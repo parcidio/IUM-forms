@@ -369,3 +369,43 @@ export async function fetchAllResponseByFormId(formId: string) {
     };
   }
 }
+
+export async function deleteFormById(formId: string) {
+  try {
+    const session = getKindeServerSession();
+    const user = await session.getUser();
+
+    
+ if (!user) {
+      return {
+        success: false,
+        message: "Unauthorized to use this resource",
+      };
+    }
+    await prisma.form.deleteMany({
+      where: {
+        formId: formId,
+        userId: user.id,
+      },
+    });
+  
+
+    return {
+      success: true,
+      message: "Form deleted successfully",
+    };
+  } catch (error) {
+   
+
+    if (prisma.form.fields.published) {
+      return {
+        success: false,
+        message: "Please unpublish the form before deleting it",
+      };
+    }
+    return {
+      success: false,
+      message: "Something went wrong",
+    };
+  }
+}

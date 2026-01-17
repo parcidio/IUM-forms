@@ -22,7 +22,7 @@ export const FormBlocks: FormBlocksType = {
   RadioSelect: RadioSelectBlock,
   StarRating: StarRatingBlock,
   CheckBox: CheckBoxBlock,
-  FileUpload: FileUploadBlock,
+ // FileUpload: FileUploadBlock,
   NumberField: NumberFieldBlock,
   DateField: DateFieldBlock,
 };

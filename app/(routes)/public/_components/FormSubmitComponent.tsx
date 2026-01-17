@@ -29,7 +29,7 @@ const FormSubmitComponent = (props: {
       block.childblocks?.forEach((childblock) => {
         const required = childblock.attributes?.required;
         const blockValue = formVals.current?.[childblock.id]?.trim();
-
+console.debug("Validating block:", childblock.id, "Value:", blockValue, "Required:", required);
         // Check if field is required and empty
         if (required && (!blockValue || blockValue.trim() === "")) {
           errors[childblock.id] = "This Field is required";
@@ -53,6 +53,7 @@ const FormSubmitComponent = (props: {
   };
 
   const handleSubmit = async () => {
+    console.debug("Submitting form with values:", formVals.current);
     if (!validateFields()) {
       toast({
         title: "Validation Error",

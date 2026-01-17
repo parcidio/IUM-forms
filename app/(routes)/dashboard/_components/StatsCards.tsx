@@ -59,7 +59,7 @@ const StatsCards = (props: {
         </CardContent>
       </Card>
 
-      {/* {Conversion Rate} */}
+      {/* {Conversion Rate} 
       <Card className="bg-white">
         <CardHeader className="pb-2">
           <CardDescription>Conversion Rate</CardDescription>
@@ -76,7 +76,7 @@ const StatsCards = (props: {
             % of views that resulted in responses
           </div>
         </CardContent>
-      </Card>
+      </Card>*/}
 
       {/* {Engagement Rate} */}
       <Card className="bg-white">

@@ -39,11 +39,7 @@ const Header = () => {
       pathname: `/dashboard/form/responds/${formId}`,
       isDisabled: true,
     },
-    {
-      name: "Settings",
-      pathname: "#",
-      isDisabled: false,
-    },
+  
   ];
 
   return (
@@ -62,7 +58,7 @@ const Header = () => {
          border-r border-gray-600"
         >
           <Logo url="/dashboard" />
-          <span className="sr-only">Formy</span>
+          <span className="sr-only">IUM-form</span>
         </div>
         <ul className="hidden md:flex flex-row">
           {NAV_MENUS.map((item, idx) => (

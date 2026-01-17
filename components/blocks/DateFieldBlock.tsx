@@ -85,7 +85,7 @@ function DateFieldCanvasComponent({ blockInstance }: { blockInstance: FormBlockI
         {required && <span className="text-red-500">*</span>}
       </Label>
 
-      <Input readOnly type="date" className="!pointer-events-none cursor-default h-10" />
+      <Input readOnly type="date"  className="!pointer-events-none cursor-default h-10" />
 
       {helperText && <p className="text-muted-foreground text-[0.8rem]">{helperText}</p>}
     </div>
@@ -138,8 +138,9 @@ function DateFieldFormComponent({
       </Label>
 
       <Input
-        type="date"
+       
         value={value}
+        placeholder="dd/mm/yyyy"
         onChange={(e) => onChange(e.target.value)}
         className={`${isError || isSubmitError ? "!border-red-500" : ""}`}
       />

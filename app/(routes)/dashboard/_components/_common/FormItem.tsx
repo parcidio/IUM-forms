@@ -7,9 +7,14 @@ import {
   Globe,
   LockKeyholeIcon,
   MessageSquare,
+  Trash2Icon,
+  TrashIcon,
 } from "lucide-react";
 import { formatDistanceToNowStrict } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
+import { deleteFormById } from "@/actions/form.action";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 type PropsType = {
   id: number;
@@ -37,9 +42,26 @@ const FormItem = (props: PropsType) => {
   const onClick = useCallback(() => {
     router.push(`/dashboard/form/builder/${formId}`);
   }, []);
+
+  const onDelete = useCallback(async () => {
+    const response = await deleteFormById(formId);
+    if (response.success) {
+      router.refresh();
+    }
+    toast({
+      title: response.success ? "Success" : "Error",
+      description: response.message,
+      duration: 4000,
+      variant: response.success ? "default" : "destructive",
+    });
+
+    
+  }, [formId, router]);
   return (
-    <div onClick={onClick} role="button" className="w-full h-auto">
+
+    <div role="button" className="w-full h-auto">
       <div
+        onClick={onClick}
         className="w-full relative flex 
       items-center justify-center
       overflow-hidden h-[150px] rounded-t-xl border border-gray-300
@@ -111,17 +133,15 @@ const FormItem = (props: PropsType) => {
               size-[14px]"
               />
             </span>
-
-            <span
-              className="text-muted-foreground 
-            flex items-center gap-1 text-[14px]"
-            >
-              {views}
-              <ActivityIcon
-                className="text-muted-foreground
-               size-[14px]"
+            <Button onClick={onDelete} className="!bg-primary !font-medium gap-1">
+              <Trash2Icon
+                className="text-white text-muted-foreground 
+              size-[14px]"
               />
-            </span>
+              Delete
+            </Button>
+
+
           </div>
           <span
             className="text-muted-foreground flex
@@ -135,7 +155,9 @@ const FormItem = (props: PropsType) => {
         </div>
       </div>
     </div>
-  );
+
+
+  )
 };
 
 export default FormItem;

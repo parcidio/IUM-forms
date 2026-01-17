@@ -13,7 +13,7 @@ export default function Home() {
           <div className="h-[200px] h-[200px] md:h-[200px] lg:h-[200px] rounded-xl shadow-lg bg-transparent">
             <div className="relative w-full h-full rounded-md">
               <Image
-                src="/images/IUM-logo.png"
+                src="/images/IUM-logo.jpg"
                 alt="IUM Logo"
                 fill
                 className="object-contain w-full h-full rounded-md"

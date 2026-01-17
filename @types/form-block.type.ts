@@ -10,7 +10,7 @@ export type FormBlockType =
   | "Heading"
   | "DateField"
   | "CheckBox"
-  | "FileUpload"
+ // | "FileUpload"
   | "NumberField"
   | "Paragraph";
 
