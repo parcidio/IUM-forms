@@ -397,6 +397,12 @@ export async function deleteFormById(formId: string) {
       };
     }
 
+      //delete all responses associated with the form
+      await prisma.formResponses.deleteMany({
+        where: {
+          formId: form.id,
+        },
+      });
   
     await prisma.form.delete({
       where: {
@@ -411,7 +417,7 @@ export async function deleteFormById(formId: string) {
     };
   } catch (error) {
 
-    if (prisma.form.fields.published) {
+    if (prisma.form.fields) {
       console.error("Error deleting form:", prisma.form.fields.published);
       console.error("Error:", error);
       return {
